@@ -1,0 +1,69 @@
+<br><div class="page-header">
+  <div class="container">
+    <div class="heading"><h1>Register Here</h1>
+  </div>
+  <form #addfrm="ngForm"(ngSubmit)="submitdata(addfrm)">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" #name="ngModel" placeholder="Enter Name here" class="form-control"[(ngModel)]="reg.name" required pattern="^[a-zA-Z]+$">
+        <div *ngIf="!name.valid" style="color: red;">
+          <div *ngIf="name.errors?.['required']"> 
+              name is required  
+          </div>
+          <div *ngIf="name.errors?.['pattern']"> 
+              name can contains only alphabets 
+          </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" #address="ngModel" placeholder="Enter Address here" class="form-control"[(ngModel)]="reg.address" required pattern="^[a-zA-Z0-9]+$">
+        <div *ngIf="!address.valid" style="color: red;">
+          <div *ngIf="address.errors?.['required']"> 
+              Address is required  
+          </div>
+          <div *ngIf="address.errors?.['pattern']"> 
+            Address is must required  
+          </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="mobileno">Mobile No:</label>
+        <input type="text" name="mobileno" id="mobileno" #mobileno="ngModel" placeholder="Enter Mobile No here" class="form-control" [(ngModel)]="reg.mobileno" required pattern="^[0-9]{10,}$">
+        <div *ngIf="!mobileno.valid" style="color: red;">
+        <div *ngIf="mobileno.errors?.['required']"> 
+            Mobileno is required  
+        </div>
+        <div *ngIf="mobileno.errors?.['pattern']"> 
+            Mobileno can contain only 10 digits
+        </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="emailid">Email Id:</label>
+      <input type="email" name="emailid" id="emailid" #emailid="ngModel" placeholder="Enter emailid here" class="form-control" [(ngModel)]="reg.emailid" required>
+      <div *ngIf="!emailid.valid" style="color: red;">
+      <div *ngIf="emailid.errors?.['required']"> 
+          Email is required  
+      </div>
+      <div *ngIf="emailid.errors?.['email']"> 
+          Email must be required one special symbol, number, small character
+      </div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" #password="ngModel" placeholder="Enter Password here" class="form-control" [(ngModel)]="reg.password" required>
+    <div *ngIf="!password.valid" style="color: red;">
+    <div *ngIf="password.errors?.['required']"> 
+        Passsword is required  
+    </div>
+    <div *ngIf="password.errors?.['pattern']"> 
+       Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or 16 characters
+    </div>
+    </div>
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="Reset" class="btn btn-danger">Reset</button>
+  </form>
+</div>
