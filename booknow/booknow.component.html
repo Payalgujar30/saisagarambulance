@@ -1,0 +1,90 @@
+<br><br><div class="page-header">
+    <div class="heading"><h1>Booknow Here</h1>
+  </div>
+  <form #addfrm="ngForm" (ngSubmit)="submitdata(addfrm)">
+    <div class="form-group">
+        <label for="pname">Patient Name:</label>
+        <input type="text" name="pname" id="pname" #pname="ngModel" placeholder="Enter patient name here" class="form-control"[(ngModel)]="b.pname" required pattern="^[a-zA-Z]+$">
+        <div *ngIf="!pname.valid" style="color: red;">
+          <div *ngIf="pname.errors?.['required']"> 
+              Patient name is required  
+          </div>
+          <div *ngIf="pname.errors?.['pattern']"> 
+              Patient name can contains only alphabets 
+          </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" #address="ngModel" placeholder="Enter Address here" class="form-control"[(ngModel)]="b.address" required>
+        <div *ngIf="!address.valid" style="color: red;">
+          <div *ngIf="address.errors?.['required']"> 
+              Address is required  
+          </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="mobileno">Mobile No:</label>
+        <input type="text" name="mobileno" id="mobileno" #mobileno="ngModel" placeholder="Enter Mobile No here" class="form-control" [(ngModel)]="b.mobileno" required pattern="^[0-9]{10,}$">
+        <div *ngIf="!mobileno.valid" style="color: red;">
+        <div *ngIf="mobileno.errors?.['required']"> 
+            Mobileno is required  
+        </div>
+        <div *ngIf="mobileno.errors?.['pattern']"> 
+          Mobileno can contain only 10 digits
+        </div>
+        </div>
+    </div>
+      <div class="form-group">
+        <label for="ct">Ambulance Type</label>
+        <select class="form-control" id="at" name="type" [(ngModel)]="b.type">
+            <option value="">--Select Ambulance Type--</option>
+            <option value="cardiac">Cardiac</option>
+            <option value="basic">Basic</option>
+            <option value="icebox">Icebox</option>
+            <option value="standby">Standby</option>
+            <option value="deadbodytransport">DeadBody Transport</option>
+            <option value="deadbodystoragebox">DeadBody Storage Box</option>
+            </select>
+      </div>
+      <div class="form-group">
+        <label for="dt">Enter Date-Day-Time:</label>
+        <textarea class="form-control" id="dt" #dt="ngModel" placeholder="dd/mm/yyyy   day   time" name="dt" [(ngModel)]="b.dt" required></textarea>
+        <div *ngIf="!dt.valid" style="color: red;">
+          <div *ngIf="dt.errors?.['required']"> 
+              is required  
+          </div>
+          <div *ngIf="dt.errors?.['pattern']"> 
+            is required  
+          </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="tf">Transfer From:</label>
+        <textarea class="form-control" id="tf" #tf="ngModel" placeholder="Transfer From" name="tf" [(ngModel)]="b.tf" required></textarea>
+        <div *ngIf="!tf.valid" style="color: red;">
+          <div *ngIf="tf.errors?.['required']"> 
+              is required  
+          </div>
+          <div *ngIf="tf.errors?.['pattern']"> 
+            is required  
+          </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="tt">Transfer To:</label>
+        <textarea class="form-control" id="tt" #tt="ngModel" placeholder="Transfer To" name="tt" [(ngModel)]="b.tt" required></textarea>
+        <div *ngIf="!tt.valid" style="color: red;">
+          <div *ngIf="tt.errors?.['required']"> 
+              is required  
+          </div>
+          <div *ngIf="tt.errors?.['pattern']"> 
+            is required  
+          </div>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-danger">Reset</button>
+    
+  
+</form>

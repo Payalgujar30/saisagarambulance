@@ -1,0 +1,17 @@
+<br><br><div class="page-header">
+    <div class="heading"><h1>Feedback Here</h1>
+  </div>
+  <form #addfrm="ngForm"(ngSubmit)="submitdata(addfrm)">
+  
+      <div class="form-group">
+        <label for="fd">Feedback Details:</label>
+        <textarea class="form-control" id="fd"  #fd="ngModel" placeholder="Enter Feedback here" name="feedbackdetails" [(ngModel)]="f.feedbackdetails" required></textarea>
+        <div *ngIf="!fd.valid" style="color: red;">
+          <div *ngIf="fd.errors?.['required']"> 
+              Feedback is required  
+          </div>
+          </div>
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="Reset" class="btn btn-danger">Reset</button>
+  </form>
